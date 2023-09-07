@@ -17,6 +17,17 @@ class NewsController extends Controller
     }
 
     function store(Request $request){
+
+         $request->validate([
+          'title' => 'numeric|string',
+          'body'  => 'required|string',
+          'author' => 'required|string',
+          'picture' => 'required|string',
+         ], [
+             'title.numeric' => "Must be a valid number",
+             'title.string' => "Must be a valid name",
+             'body.required' => "Post content is required",
+        ] );
         // $news = new News();
         // $news->title = $request->title;
         // $news->body = $request->body;
